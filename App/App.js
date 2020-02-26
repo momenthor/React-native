@@ -1,19 +1,28 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import Top from './component/topbar';
+import {View, Image} from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      <View style={{backgroundColor: 'white',color: 'black'}}>
+
+          {/*logo*/} 
+          <View style={{alignItems: 'center',marginTop: 45}}>
+            <Image
+              style={{height: 42, width: 290,}}
+              source={{uri: 'https://i.goopics.net/XKvdl.png'}}
+              resizeMode="contain"
+            />
+          </View>
+
+          {/*boxUser*/}
+          <View>
+            <Image
+              source={}
+            />
+          </View> 
+      </View>
+    );
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
