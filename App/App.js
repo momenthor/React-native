@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Top from './component/topbar';
 import {StyleSheet, View, Image, Text, ScrollView, SafeAreaView} from 'react-native';
 import Constants from 'expo-constants';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faMarker } from '@fortawesome/free-solid-svg-icons';
+import Icone from 'react-native-vector-icons/FontAwesome5';
 
 export default class App extends Component {
   render() {
@@ -22,7 +21,7 @@ export default class App extends Component {
 
           {/*boxUser*/}
           <View style={{flex: 1,alignItems: 'center'}}>
-            <View style={styles.userBox}>
+            <View style={styles.userBox} >
                 <View style={styles.shadow}><Image
                   style={styles.userImg}
                   source={{uri: 'https://i.goopics.net/y2OdD.png'}}
@@ -33,10 +32,9 @@ export default class App extends Component {
                 </View>
                 <View style={styles.userInfo}>
                   <Text style={{fontSize: 25}}>LUDOVIC</Text>
-                  <Text style={{fontSize: 16}}>Ceo cher fabook, 27 ans</Text>
-                  <Text><FontAwesomeIcon icon={faMarker} /></Text>
-                </View>
-                
+                  <Text style={{fontSize: 16,marginBottom: 5,}}>Ceo cher fabook, 27 ans</Text>
+                  <Text style={{fontSize: 15}}><Icone style={{fontSize:15,color: '#0984e3'}} name={'map-marker-alt'} /> Lyon</Text>
+                </View> 
             </View>
           </View>
       </View>
