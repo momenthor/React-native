@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import Top from './component/topbar';
-import {StyleSheet, View, Image} from 'react-native';
+import {StyleSheet, View, Image, Text, ScrollView, SafeAreaView} from 'react-native';
+import Constants from 'expo-constants';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faMarker } from '@fortawesome/free-solid-svg-icons';
 
 export default class App extends Component {
   render() {
     return (
-      <View style={{backgroundColor: 'white',color: 'black'}}>
-
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+      <View style={{backgroundColor: 'white',}}>
           {/*logo*/} 
           <View style={{alignItems: 'center',marginTop: 45}}>
             <Image
@@ -25,14 +29,19 @@ export default class App extends Component {
                   resizeMode="cover"
                 /></View>
                 <View style={styles.userPrix}>
-
+                  <Text style={{color: 'white'}}>40€ / Heure</Text>
                 </View>
                 <View style={styles.userInfo}>
-                  
+                  <Text style={{fontSize: 25}}>LUDOVIC</Text>
+                  <Text style={{fontSize: 16}}>Ceo cher fabook, 27 ans</Text>
+                  <Text><FontAwesomeIcon icon={faMarker} /></Text>
                 </View>
+                
             </View>
-          </View> 
+          </View>
       </View>
+      </ScrollView>
+    </SafeAreaView>
     );
   }
 }
@@ -55,11 +64,17 @@ const styles = StyleSheet.create({
   },
 
   userPrix: {
-    width: 100,
-    height: 20,
+    width: 110,
+    height: 35,
     backgroundColor: 'black',
     position: 'relative',
-    top: -45,
+    top: -50,
+    zIndex: 10,
+    right: -90,
+    borderRadius: 100,
+    alignItems: 'center',
+    paddingBottom: 10,
+    paddingTop: 9,
   },
 
   shadow:{
@@ -88,6 +103,14 @@ const styles = StyleSheet.create({
     position: 'relative',
     top: -65,
     borderRadius: 5,
-  }
+    paddingTop: 2,
+    paddingLeft: 10,
+    textTransform: "uppercase"
+  },
+
+  container: {
+    flex: 1,
+    marginTop: Constants.statusBarHeight,
+  },
   
 })
