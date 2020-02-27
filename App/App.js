@@ -1,13 +1,51 @@
+//                                                __    __                           |
+//     /'\_/`\                                   /\ \__/\ \                          |
+//    /\      \    ___     ___ ___      __    ___\ \ ,_\ \ \___     ___   _ __       |
+//    \ \ \__\ \  / __`\ /' __` __`\  /'__`\/' _ `\ \ \/\ \  _ `\  / __`\/\`'__\     |
+//     \ \ \_/\ \/\ \L\ \/\ \/\ \/\ \/\  __//\ \/\ \ \ \_\ \ \ \ \/\ \L\ \ \ \/      |
+//      \ \_\\ \_\ \____/\ \_\ \_\ \_\ \____\ \_\ \_\ \__\\ \_\ \_\ \____/\ \_\      |
+//       \/_/ \/_/\/___/  \/_/\/_/\/_/\/____/\/_/\/_/\/__/ \/_/\/_/\/___/  \/_/      |            
+//                       ______                                                      |
+//                      /\  _  \                                                     |
+//                      \ \ \L\ \  _____   _____                                     |
+//                       \ \  __ \/\ '__`\/\ '__`\                                   |
+//                        \ \ \/\ \ \ \L\ \ \ \L\ \                                  |
+//                         \ \_\ \_\ \ ,__/\ \ ,__/                                  |
+//                          \/_/\/_/\ \ \/  \ \ \/                                   |
+//                                   \ \_\   \ \_\                                   |
+//                                    \/_/    \/_/                                   |
+//                                                                                   |
+//                                                                                   |
+//                                * * * * * * * * * * * * *                          |
+//                                *                       *                          | 
+//                                *     version 1.0.12    *                          |
+//                                *                       *                          |
+//                                * * * * * * * * * * * * *                          |
+//                                                                                   |
+//___________________________________________________________________________________|
+
+//Navigation [\!/] doit rester le première import [\!/]
 import 'react-native-gesture-handler';
+
+//react nativ
 import React, { Component } from 'react';
 import Top from './component/topbar';
 import {StyleSheet, View, Image, Text, ScrollView, SafeAreaView, Dimensions, Button, Alert} from 'react-native';
+
+//scroll
 import Constants from 'expo-constants';
+
+//icone
 import Icone from 'react-native-vector-icons/FontAwesome5';
+
+//navigation
 import {NavigationContainer} from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-var full = Dimensions.get('window').width;//largeur max en fontion de la taille de l'ecran
+//largeur max en fontion de la taille de l'ecran
+var full = Dimensions.get('window').width;
 
+//main app
 export default class App extends Component {
   render() {
     return (
@@ -58,6 +96,8 @@ export default class App extends Component {
   }
 }
 
+
+//css | design
 const styles = StyleSheet.create({
   userBox: {
       backgroundColor: 'white',
@@ -200,3 +240,53 @@ const styles = StyleSheet.create({
   },
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                          /[-])//  ___
+//                     __ --\ `_/~--|  / \
+//                   /_-/~~--~~ /~~~\\_\ /\
+//                   |  |___|===|_-- | \ \ \
+// _/~~~~~~~~|~~\,   ---|---\___/----|  \/\-\
+// ~\________|__/   / // \__ |  ||  / | |   | |
+//          ,~-|~~~~~\--, | \|--|/~|||  |   | |
+//          [3-|____---~~ _--'==;/ _,   |   |_|
+//                      /   /\__|_/  \  \__/--/
+//                     /---/_\  -___/ |  /,--|
+//                     /  /\/~--|   | |  \///
+//                    /  / |-__ \    |/
+//                   |--/ /      |-- | \
+//                  \^~~\\/\      \   \/- _
+//                   \    |  \     |~~\~~| \
+//                    \    \  \     \   \  | \
+//                      \    \ |     \   \    \
+//                       |~~|\/\|     \   \   |
+//                      |   |/         \_--_- |\
+//                      |  /            /   |/\/
+//                       ~~             /  /
+//                                     |__/
+//                    
+//                     Vers l'infini et au-delà
+//                     © - 2020 MomenthorStudio
