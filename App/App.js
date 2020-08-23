@@ -154,7 +154,7 @@ function FiltreScreen({ navigation }) {
           <TextInput style={stylesF.inputV} placeholderTextColor = "grey" placeholder = "date recherché" onChangeText={text => onChangeText3(text) }value={value3}/>
         </View>
 
-        <View style={stylesF.btnFiltre}><Text style={{color:'white',textAlign: 'center',fontSize: 35}}>Filter <Icone style={{fontSize:35,color: 'white',}} name={'sign-out-alt'} /></Text></View>
+        <View style={stylesF.btnFiltre}><Text onPress={() => navigation.navigate('Home')} style={{color:'white',textAlign: 'center',fontSize: 35,padding: 10}}>Filtrer <Icone style={{fontSize:35,color: 'white',}} name={'sign-out-alt'} /></Text></View>
     </View>
   );
 } 
@@ -392,8 +392,9 @@ const stylesF = StyleSheet.create({
   btnFiltre:{
     backgroundColor: '#292929',
     borderRadius: 100,
-    width: 180,
-    padding: 10,
+    marginLeft: 20,
+    marginTop: 100,
+    marginRight:20,
   },
 
   inputV:{
