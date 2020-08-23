@@ -18,7 +18,7 @@
 //                                                                                   |
 //                              * * * * * * * * * * * * *                            |
 //                              *                       *                            | 
-//                              *     version 1.0.13    *                            |
+//                              *     version 1.0.14    *                            |
 //                              *                       *                            |
 //                              * * * * * * * * * * * * *                            |
 //                                                                                   |
@@ -29,11 +29,13 @@
 import 'react-native-gesture-handler';
 
 //react nativ
-import * as React from 'react';
-import {StyleSheet, View, Image, Text, ScrollView, SafeAreaView, Dimensions, Button, Alert, TextInput} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {ActivityIndicator,StyleSheet, View, Image, Text, ScrollView, SafeAreaView, Dimensions, Button, Alert, TextInput,component} from 'react-native';
+
 
 //scroll
 import Constants from 'expo-constants';
+
 
 //icone
 import Icone from 'react-native-vector-icons/FontAwesome5';
@@ -45,21 +47,23 @@ import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack'
 //fonts
 import * as Font from 'expo-font';
 
+
+//import Api from './component/API';
 //largeur max en fontion de la taille de l'ecran
 var full = Dimensions.get('window').width;
 
-
-//  /~~~\/~~\/~~~\/~~~\/~~\/~~~\                    /~~~\/~~\/~~~\/~~~\/~~\/~~~\
-//  | /\/ /\/ /\ || /\/ /\/ /\ |                    | /\ \/\ \/\ || /\ \/\ \/\ |
-//  \ \/ /\/ /\/ /\ \/ /\/ /\/ /   DEBUT DES PAGES  \ \/\ \/\ \/ /\ \/\ \/\ \/ /
-//   \ \/\ \/\ \/  \ \/\ \/\ \/     ET DU DESIGN     \/ /\/ /\/ /  \/ /\/ /\/ /
-// ,_/\ \/\ \/\ \__/\ \/\ \/\ \______________________/ /\/ /\/ /\__/ /\/ /\/ /\_,
-// (__/\__/\__/\____/\__/\__/\________________________/\__/\__/\____/\__/\__/\__)
+//  /~~~\/~~\/~~~\/~~~\/~~\/~~~\-_-_-_-_-_-_-_-_-_-_-/~~~\/~~\/~~~\/~~~\/~~\/~~~\
+//  | /\/ /\/ /\ || /\/ /\/ /\ |                     | /\ \/\ \/\ || /\ \/\ \/\ |
+//  \ \/ /\/ /\/ /\ \/ /\/ /\/ /    Page et design   \ \/\ \/\ \/ /\ \/\ \/\ \/ /
+//   \ \/\ \/\ \/  \ \/\ \/\ \/       Momenthor       \/ /\/ /\/ /  \/ /\/ /\/ /
+// ,_/\ \/\ \/\ \__/\ \/\ \/\ \_______________________/ /\/ /\/ /\__/ /\/ /\/ /\_,
+// (__/\__/\__/\____/\__/\__/\_________________________/\__/\__/\____/\__/\__/\__)
 
 //page d'accueil
 function HomeScreen({ navigation }) {
+
   return (
-    <SafeAreaView style={styles.container}>
+     <SafeAreaView style={styles.container}>
     <ScrollView>
     <View style={{backgroundColor: 'white',}}>
 
@@ -70,7 +74,7 @@ function HomeScreen({ navigation }) {
             source={{uri: 'https://i.goopics.net/XKvdl.png'}}
             resizeMode="contain"
           />
-        </View>
+        </View> 
 
         {/*filtres*/}
 
@@ -102,6 +106,7 @@ function HomeScreen({ navigation }) {
         </View>
     </View>
     </ScrollView>
+
     {/*navbar*/} 
     <View style={styles.centernav}><View style={styles.centerbtn2}><View accessibilityRole='button'  style={styles.centerbtn}><Icone onPress={() => navigation.navigate('Home')} style={{fontSize:55,color: 'black'}} name={'user-tie'} /></View></View></View>
     <View style={styles.nav}>
@@ -117,15 +122,42 @@ function HomeScreen({ navigation }) {
 function FiltreScreen({ navigation }) {
 
   //instances options input
-  const [value, onChangeText] = React.useState('Useless Placeholder');
+  const [value, onChangeText] = React.useState('');
+  const [value2, onChangeText2] = React.useState('');
+  const [value3, onChangeText3] = React.useState('');
 
   return (
     <View style={{ flex: 1,backgroundColor: 'white'}}>
-       <TextInput style={stylesF.input} placeholder='Test' onChangeText={text => onChangeText(text) }value={value}/>
-       <View style={stylesF.btnFiltre}><Text style={{color:'white'}}>test <Icone style={{fontSize:35,color: 'white'}} name={'sign-out-alt'} /></Text></View>
+
+        <View style={stylesF.tri}>
+          <Text style={stylesF.txtfiltres}>Mes filtres</Text>
+        </View>
+
+        <View style={{flexDirection: 'row',width: full,marginBottom: 20}}>
+          <View style={stylesF.ville}>
+            <Text style={stylesF.txtville}> <Icone style={{fontSize:20,color: 'black'}} name={'building'} /> Ville</Text>
+          </View>
+          <TextInput style={stylesF.inputV} placeholderTextColor = "grey" placeholder = "ville recherché" onChangeText={text => onChangeText(text) }value={value}/>
+        </View>
+
+        <View style={{flexDirection: 'row',width: full,marginBottom: 20}}>
+          <View style={stylesF.ville}>
+            <Text style={stylesF.txtville}> <Icone style={{fontSize:20,color: 'black',marginRight:5,marginLeft: -15,}} name={'euro-sign'} /> Prix</Text>
+          </View>
+          <TextInput style={stylesF.inputV} placeholderTextColor = "grey" placeholder = "pas d'ordre de prix" onChangeText={text => onChangeText2(text) }value={value2}/>
+        </View>
+
+        <View style={{flexDirection: 'row',width: full,marginBottom: 20}}>
+          <View style={stylesF.ville}>
+            <Text style={stylesF.txtville}><Icone style={{fontSize:20,color: 'black'}} name={'calendar-minus'} /> Date</Text>
+          </View>
+          <TextInput style={stylesF.inputV} placeholderTextColor = "grey" placeholder = "date recherché" onChangeText={text => onChangeText3(text) }value={value3}/>
+        </View>
+
+        <View style={stylesF.btnFiltre}><Text style={{color:'white',textAlign: 'center',fontSize: 35}}>Filter <Icone style={{fontSize:35,color: 'white',}} name={'sign-out-alt'} /></Text></View>
     </View>
   );
-}
+} 
 
 const Stack = createStackNavigator();
 
@@ -135,7 +167,9 @@ export default class App extends React.Component {
      // 'Montserrat': require('./assets/fonts/Montserrat-Regular.ttf'),
     //});
  // }
-  render() {
+  render(){
+    
+
   return (
     <NavigationContainer style={{backgroundColor: 'white'}}>
       <Stack.Navigator >
@@ -143,7 +177,8 @@ export default class App extends React.Component {
         <Stack.Screen name="Filtre" options={{ headerBackTitle: "Retour", headerStyle: {backgroundColor: '#292929',},headerTintColor: '#fff',headerTitleStyle: {fontWeight: 'bold',},} } component={FiltreScreen} />
       </Stack.Navigator>
     </NavigationContainer>
-  );}
+    );
+  }
 }
 
 //css | design HomeScreen
@@ -352,13 +387,84 @@ const styles = StyleSheet.create({
 
 })
 
+//css | design filtre
 const stylesF = StyleSheet.create({
   btnFiltre:{
     backgroundColor: '#292929',
     borderRadius: 100,
     width: 180,
+    padding: 10,
+  },
 
-  }
+  inputV:{
+    justifyContent: 'center',
+    backgroundColor: '#fafafa',
+    marginLeft: -20,
+    borderTopEndRadius: 50,
+    borderBottomEndRadius: 50,
+    fontSize: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 30,
+    paddingRight:20,
+    width: '68%',
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+  },
+
+  tri:{
+    backgroundColor: 'white',
+    marginBottom: 30,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+  },
+
+  txtfiltres:{
+    backgroundColor: '#dbdbdb',
+    width:130,
+    fontSize: 25,
+    paddingTop:15,
+    paddingBottom:15,
+    textAlign: 'center',
+  },
+
+  ville:{
+    backgroundColor: 'white',
+    width: 100,
+    borderRadius: 25,
+    position: 'relative',
+    marginLeft:25,
+    zIndex: 100,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+  },
+
+  txtville:{
+    fontSize: 20,
+    padding: 10,
+    textAlign: 'center'
+  },
+
+  
+
 })
 
 
