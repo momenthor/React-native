@@ -36,7 +36,7 @@ export default App = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://192.168.1.27:8006/mentor/')
+    fetch('http://192.168.1.27:8006/mentor/1')
       .then((response) => response.json())
       .then((json) => setData(json.results))
       .catch((error) => console.error(error))
@@ -45,10 +45,7 @@ export default App = () => {
 
   return (
     <SafeAreaView>
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }>
+      <ScrollView>
         <View style={{ flex: 1, padding: 10,marginBottom:170 }}>
           {isLoading ? (
             <ActivityIndicator />
@@ -61,7 +58,7 @@ export default App = () => {
 
                   <View style={styles.userBox} >
 
-                      <View style={styles.shadow}><Image  style={styles.userImg} source={{uri: 'https://i.goopics.net/y2OdD.png'}} resizeMode="cover"/></View>
+                      <View style={styles.shadow}><Image style={styles.userImg} source={{uri: 'https://i.goopics.net/y2OdD.png'}} resizeMode="cover"/></View>
 
                       <View style={styles.userPrix}>
 
@@ -70,7 +67,7 @@ export default App = () => {
 
                       <View style={styles.userInfo}>
                         <Text style={{fontSize: 25,/*fontFamily: 'Montserrat'*/}}>{item.prenom} {item.nom}</Text>
-                        <Text style={{fontSize: 16,/*fontFamily: 'Montserrat',*/marginBottom: 5,}}>{item.poste}, {item.age} ans</Text>
+                        <Text style={{fontSize: 16,/*fontFamily: 'Montserrat',*/marginBottom: 5,}}>Ceo cher fabook, 27 ans</Text>
                         <Text style={{fontSize: 15,/*fontFamily: 'Montserrat'*/}}><Icone style={{fontSize:15,color: '#0984e3'}} name={'map-marker-alt'} /> {item.ville}</Text>
                       </View> 
 

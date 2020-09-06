@@ -30,8 +30,9 @@ import 'react-native-gesture-handler';
 
 //react nativ
 import React, { useEffect, useState } from 'react';
-import {ActivityIndicator,StyleSheet, View, Image, Text, ScrollView, SafeAreaView, Dimensions, Button, Alert, TextInput,component} from 'react-native';
+import {ActivityIndicator,StyleSheet, View, Image, Text, SafeAreaView, Dimensions, Button, Alert, TextInput,component,StatusBar,TouchableOpacity} from 'react-native';
 import BoxUser from './component/BoxUser';
+import InfoUser from './component/infoUser';
 
 
 //scroll
@@ -53,6 +54,7 @@ import * as Font from 'expo-font';
 //largeur max en fontion de la taille de l'ecran
 var full = Dimensions.get('window').width;
 
+
 //  /~~~\/~~\/~~~\/~~~\/~~\/~~~\-_-_-_-_-_-_-_-_-_-_-/~~~\/~~\/~~~\/~~~\/~~\/~~~\
 //  | /\/ /\/ /\ || /\/ /\/ /\ |                     | /\ \/\ \/\ || /\ \/\ \/\ |
 //  \ \/ /\/ /\/ /\ \/ /\/ /\/ /    Page et design   \ \/\ \/\ \/ /\ \/\ \/\ \/ /
@@ -64,8 +66,10 @@ var full = Dimensions.get('window').width;
 function HomeScreen({ navigation }) {
 
   return (
-     <SafeAreaView style={styles.container}>
-    <View style={{backgroundColor: 'white',}}>
+    <SafeAreaView style={styles.container}>
+      <View style={{backgroundColor: 'white',}}>
+
+        <StatusBar barStyle={'dark-content'} />
 
         {/*logo*/} 
         <View style={{alignItems: 'center',marginTop: 10}}>
@@ -94,7 +98,7 @@ function HomeScreen({ navigation }) {
     {/*navbar*/} 
     <View style={styles.centernav}><View style={styles.centerbtn2}><View accessibilityRole='button'  style={styles.centerbtn}><Icone onPress={() => navigation.navigate('Home')} style={{fontSize:55,color: 'black'}} name={'user-tie'} /></View></View></View>
     <View style={styles.nav}>
-        <View style={[styles.boxbtnnav, {borderRightWidth: 1,borderColor: 'black',}]}><Text style={styles.txtnav} onPress={() => navigation.navigate('Compte')}>mon compte</Text></View>
+        <View style={[styles.boxbtnnav, {borderRightWidth: 1,borderColor: 'black',}]}><Text style={styles.txtnav} onPress={() => navigation.navigate('Détails')}>mon compte</Text></View>
         <View style={styles.boxbtnnav}><Text style={styles.txtnav2} onPress={() => Alert.alert('mon planing')}>mon planing</Text></View>
     </View>
   </SafeAreaView>
@@ -144,8 +148,15 @@ function FiltreScreen({ navigation }) {
 }
 
 
-function CompteScreen({ navigation }) {
-
+function infoUsercreen({ navigation }) {
+  return (
+    <SafeAreaView>
+      <View>
+        {/*boxUser*/}
+        <InfoUser />
+      </View>
+    </SafeAreaView>
+  );
 }
 
 const Stack = createStackNavigator();
@@ -164,7 +175,7 @@ export default class App extends React.Component {
       <Stack.Navigator >
         <Stack.Screen name="Home" options={{ headerHideShadow: false,headerStyle:{ backgroundColor: 'white' },headerShown: false }} component={HomeScreen} />
         <Stack.Screen name="Filtre" options={{ headerBackTitle: "Retour", headerStyle: {backgroundColor: '#292929',},headerTintColor: '#fff',headerTitleStyle: {fontWeight: 'bold',},} } component={FiltreScreen} />
-        <Stack.Screen name="Compte" options={{ headerBackTitle: "Retour", headerStyle: {backgroundColor: '#fff',shadowColor: "#000",shadowOffset: {width: 0,height: 0,},shadowOpacity: 0.25,shadowRadius: 5,},headerTintColor: '#fff',headerTitleStyle: {fontWeight: 'bold',},} } component={CompteScreen} />
+        <Stack.Screen name="Détails" options={{ headerBackTitle: "Home", headerStyle: {backgroundColor: '#fff',shadowColor: "#000",shadowOffset: {width: 0,height: 0,},shadowOpacity: 0.25,shadowRadius: 5,},headerTintColor: 'black',headerTitleStyle: {fontWeight: 'bold',},} } component={infoUsercreen} />
       </Stack.Navigator>
     </NavigationContainer>
     );
