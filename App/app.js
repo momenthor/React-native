@@ -30,7 +30,11 @@ import 'react-native-gesture-handler';
 
 //react nativ
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import {ActivityIndicator,StyleSheet, View, Image, StatusBar, Text, ScrollView, SafeAreaView, Dimensions, Button, Alert, TextInput,component} from 'react-native';
+=======
+import {ActivityIndicator,StyleSheet, View, Image, Text, ScrollView, SafeAreaView, Dimensions, Button, Alert, TextInput,component} from 'react-native';
+>>>>>>> parent of 4812840... up
 import BoxUser from './component/BoxUser';
 
 
@@ -65,7 +69,10 @@ function HomeScreen({ navigation }) {
 
   return (
      <SafeAreaView style={styles.container}>
+<<<<<<< HEAD
        <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor = "#00BCD4" translucent = {true}/>
+=======
+>>>>>>> parent of 4812840... up
     <View style={{backgroundColor: 'white',}}>
 
         {/*logo*/} 

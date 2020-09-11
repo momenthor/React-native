@@ -36,7 +36,7 @@ export default App = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://192.168.1.27:8006/mentor/')
+    fetch('http://momenthor.fr:8006/mentor/')
       .then((response) => response.json())
       .then((json) => setData(json.results))
       .catch((error) => console.error(error))
@@ -61,7 +61,7 @@ export default App = () => {
 
                   <View style={styles.userBox} >
 
-                      <View style={styles.shadow}><Image  style={styles.userImg} source={{uri: 'https://i.goopics.net/y2OdD.png'}} resizeMode="cover"/></View>
+                      <View style={styles.shadow}><Image style={styles.userImg} source={{uri: 'https://i.goopics.net/y2OdD.png'}} resizeMode="cover"/></View>
 
                       <View style={styles.userPrix}>
 
@@ -70,7 +70,7 @@ export default App = () => {
 
                       <View style={styles.userInfo}>
                         <Text style={{fontSize: 25,/*fontFamily: 'Montserrat'*/}}>{item.prenom} {item.nom}</Text>
-                        <Text style={{fontSize: 16,/*fontFamily: 'Montserrat',*/marginBottom: 5,}}>{item.poste}, {item.age} ans</Text>
+                        <Text style={{fontSize: 16,/*fontFamily: 'Montserrat',*/marginBottom: 5,}}>Ceo cher fabook, 27 ans</Text>
                         <Text style={{fontSize: 15,/*fontFamily: 'Montserrat'*/}}><Icone style={{fontSize:15,color: '#0984e3'}} name={'map-marker-alt'} /> {item.ville}</Text>
                       </View> 
 
