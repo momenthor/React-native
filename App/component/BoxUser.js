@@ -70,7 +70,7 @@ export default App = () => {
 
                       <View style={styles.userInfo}>
                         <Text style={{fontSize: 25,/*fontFamily: 'Montserrat'*/}}>{item.prenom} {item.nom}</Text>
-                        <Text style={{fontSize: 16,/*fontFamily: 'Montserrat',*/marginBottom: 5,}}>Ceo cher fabook, 27 ans</Text>
+                        <Text style={{fontSize: 16,/*fontFamily: 'Montserrat',*/marginBottom: 5,}}>{item.poste}, {item.age} ans</Text>
                         <Text style={{fontSize: 15,/*fontFamily: 'Montserrat'*/}}><Icone style={{fontSize:15,color: '#0984e3'}} name={'map-marker-alt'} /> {item.ville}</Text>
                       </View> 
 
